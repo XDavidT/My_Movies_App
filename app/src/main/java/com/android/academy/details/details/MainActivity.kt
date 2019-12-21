@@ -1,12 +1,11 @@
-package com.android.academy
+package com.android.academy.details.details
 
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
+import com.android.academy.R
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
