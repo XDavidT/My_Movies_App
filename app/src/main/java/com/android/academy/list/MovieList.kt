@@ -2,8 +2,11 @@ package com.android.academy.list
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.academy.R
 import com.android.academy.movie_model.MovieModel
+import kotlinx.android.synthetic.main.activity_movie_list.*
 
 class MovieList : AppCompatActivity() {
 
@@ -13,6 +16,12 @@ class MovieList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_list)
         loadMovies()
+    }
+
+    private fun initRecyView(){
+        movies_list_layout.layoutManager = LinearLayoutManager(this@MovieList)
+        movies_list_layout.adapter = MoviesAdapter(movies, this@MovieList, this@MovieList)
+
     }
 
     fun loadMovies(){

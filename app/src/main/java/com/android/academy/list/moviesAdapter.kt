@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.movie_model.MovieModel
 import kotlinx.android.synthetic.main.item_movie.view.*
-import org.w3c.dom.Text
 
-class MoviesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
+class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(
+ context: Context
 ){
     private val movies_cache = mutableListOf<MovieModel>()
 
@@ -26,20 +26,22 @@ class MoviesAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>(
         return movies_cache.size
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        return ViewHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.item_movie,parent,false)
+        )
     }
 
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-//        holder.bind(movies_cache[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(movies_cache[position])
     }
 
 
 
-    inner class MovieViewHolder(movieView: View) : RecyclerView.ViewHolder(movieView){
-        private val tvTitle:TextView = movieView.movieTitle
-        private val ivPoster:ImageView = movieView.moviePosterView
+    inner class ViewHolder(movieView: View) : RecyclerView.ViewHolder(movieView){
+        private val tvTitle: TextView = movieView.movieTitle
+        private val ivPoster: ImageView = movieView.moviePosterView
         private val tvDesc:TextView = movieView.movieDesc
 
         fun bind(movieModel: MovieModel){
