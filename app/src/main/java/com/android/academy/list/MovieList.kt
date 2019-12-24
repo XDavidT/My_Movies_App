@@ -16,15 +16,16 @@ class MovieList : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_list)
         loadMovies()
+        initRecyView()
     }
 
     private fun initRecyView(){
 
         //New layout manager to get the view in linear
-        movies_list_layout.layoutManager = LinearLayoutManager(this@MovieList)
+        movies_list_layout.layoutManager = LinearLayoutManager(this)
 
         //build adapter with local context
-        var moviesAdapter = MoviesAdapter(context = this@MovieList)
+        var moviesAdapter = MoviesAdapter(this)
 
         //attach the adapter
         movies_list_layout.adapter = moviesAdapter
