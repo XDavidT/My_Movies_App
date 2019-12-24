@@ -1,5 +1,6 @@
 package com.android.academy.list
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +12,9 @@ import com.android.academy.movie_model.MovieModel
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 
-class MoviesAdapter : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(
- context: Context
-){
+class MoviesAdapter(
+    context: Context
+) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(){
     private val movies_cache = mutableListOf<MovieModel>()
 
     fun setData(newItems: List<MovieModel>){

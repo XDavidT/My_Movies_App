@@ -19,8 +19,18 @@ class MovieList : AppCompatActivity() {
     }
 
     private fun initRecyView(){
+
+        //New layout manager to get the view in linear
         movies_list_layout.layoutManager = LinearLayoutManager(this@MovieList)
-        movies_list_layout.adapter = MoviesAdapter(movies, this@MovieList, this@MovieList)
+
+        //build adapter with local context
+        var moviesAdapter = MoviesAdapter(context = this@MovieList)
+
+        //attach the adapter
+        movies_list_layout.adapter = moviesAdapter
+
+        //add some data
+        moviesAdapter.setData(movies)
 
     }
 
