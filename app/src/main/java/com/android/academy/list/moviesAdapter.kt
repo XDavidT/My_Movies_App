@@ -7,27 +7,38 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.movie_model.MovieModel
 import kotlinx.android.synthetic.main.item_movie.view.*
 
+private class MoviesDiffUtilCallback : DiffUtil.ItemCallback<MovieModel>(){
+    override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
+        return oldItem.hashCode() == newItem.hashCode()
+    }
+
+    override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
+        return oldItem.name == newItem.name && oldItem.description == newItem.description &&
+                oldItem.imageRes == newItem.imageRes
+    }
+
+}
 
 class MoviesAdapter(
     context: Context,
     private val movieClickListener: OnMovieClickListener
 ) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(){
-    private val movies_cache = mutableListOf<MovieModel>()
+//    private val movies_cache = mutableListOf<MovieModel>()
+    private val asyncListDiffer = AsyncListDiffer<MovieModel>(this,MoviesDiffUtilCallback())
 
     fun setData(newItems: List<MovieModel>){
-        movies_cache.clear()
-        movies_cache.addAll(newItems)
-        notifyDataSetChanged()
+        asyncListDiffer.submitList(newItems)
     }
 
     override fun getItemCount(): Int {
-        return movies_cache.size
+        return asyncListDiffer.currentList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -39,7 +50,8 @@ class MoviesAdapter(
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(movies_cache[position])
+        val movieModel = asyncListDiffer.currentList[position]
+        holder.bind(movieModel)
     }
 
 
