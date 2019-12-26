@@ -30,7 +30,7 @@ class MoviesAdapter(
     context: Context,
     private val movieClickListener: OnMovieClickListener
 ) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(){
-//    private val movies_cache = mutableListOf<MovieModel>()
+
     private val asyncListDiffer = AsyncListDiffer<MovieModel>(this,MoviesDiffUtilCallback())
 
     fun setData(newItems: List<MovieModel>){
