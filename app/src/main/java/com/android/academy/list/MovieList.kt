@@ -3,21 +3,31 @@ package com.android.academy.list
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.academy.R
 import com.android.academy.movie_model.MovieModel
 import kotlinx.android.synthetic.main.activity_movie_list.*
 
-class MovieList : AppCompatActivity() {
+class MovieList : AppCompatActivity(), OnMovieClickListener  {
 
     private val movies = mutableListOf<MovieModel>()
+    private lateinit var moviesAdapter: MoviesAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_list)
         loadMovies()
         initRecyView()
+
+        btnRandom.setOnClickListener{
+            val copy = mutableListOf<MovieModel>()
+            copy.addAll(movies)
+            copy.shuffle()
+            moviesAdapter.setData(copy)
+        }
     }
+
 
     private fun initRecyView(){
 
@@ -25,7 +35,7 @@ class MovieList : AppCompatActivity() {
         movies_list_layout.layoutManager = LinearLayoutManager(this)
 
         //build adapter with local context
-        var moviesAdapter = MoviesAdapter(this)
+        moviesAdapter = MoviesAdapter(this,this)
 
         //attach the adapter
         movies_list_layout.adapter = moviesAdapter
@@ -33,6 +43,10 @@ class MovieList : AppCompatActivity() {
         //add some data
         moviesAdapter.setData(movies)
 
+    }
+
+    override fun onMovieClicked(movie: MovieModel){
+        Toast.makeText(this,movie.name,Toast.LENGTH_SHORT).show()
     }
 
     fun loadMovies(){
