@@ -1,7 +1,6 @@
 package com.android.academy.list
 
-import android.content.Context
-import android.graphics.Movie
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,32 +15,36 @@ import kotlinx.android.synthetic.main.item_movie.view.*
 
 private class MoviesDiffUtilCallback : DiffUtil.ItemCallback<MovieModel>(){
     override fun areItemsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
-        return oldItem.hashCode() == newItem.hashCode()
+        return oldItem.name == newItem.name
     }
 
     override fun areContentsTheSame(oldItem: MovieModel, newItem: MovieModel): Boolean {
-        return oldItem.name == newItem.name && oldItem.description == newItem.description &&
-                oldItem.imageRes == newItem.imageRes
+        return oldItem == newItem
     }
 
 }
 
 class MoviesAdapter(
-    context: Context,
     private val movieClickListener: OnMovieClickListener
 ) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>(){
 
     private val asyncListDiffer = AsyncListDiffer<MovieModel>(this,MoviesDiffUtilCallback())
 
     fun setData(newItems: List<MovieModel>){
+        Log.d("David","setData: ${newItems.size}")
         asyncListDiffer.submitList(newItems)
+        Log.d("David","setData: Done")
     }
 
     override fun getItemCount(): Int {
+        Log.d("David","getItemCount: ${asyncListDiffer.currentList.size}")
+
         return asyncListDiffer.currentList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        Log.d("David","onCreateViewHolder")
+
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_movie,parent,false),
             movieClickListener

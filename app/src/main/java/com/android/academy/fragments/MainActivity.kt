@@ -1,4 +1,4 @@
-package com.android.academy.details.details
+package com.android.academy.fragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

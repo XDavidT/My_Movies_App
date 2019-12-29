@@ -2,21 +2,22 @@ package com.android.academy.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.list.MoviesAdapter
 import com.android.academy.list.OnMovieClickListener
 import com.android.academy.movie_model.MovieModel
-import kotlinx.android.synthetic.main.fragment_movies.view.*
+import kotlinx.android.synthetic.main.fragment_movies.*
 
 class MoviesFragment :Fragment(), OnMovieClickListener{
     private var listener: OnMovieClickListener? = null
-    private lateinit var moviesRcv: RecyclerView
     private lateinit var movieAdapter: MoviesAdapter
     private val movies: MutableList<MovieModel> = ArrayList()
 
@@ -26,11 +27,17 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_movies,container,false)
-        moviesRcv = view.findViewById(R.id.movies_fragment_rcv)
+
+        Log.d("David","On create view")
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         loadMovies()
         initRecyclerView()
+        Log.d("David","onViewCreated")
 
-        return view
     }
 
     override fun onMovieClicked(movieModel: MovieModel) {
@@ -52,11 +59,12 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
     }
 
     private fun initRecyclerView(){
-        context?.let{
-            movieAdapter = MoviesAdapter(it,this@MoviesFragment)
-            moviesRcv.adapter = movieAdapter
-            movieAdapter.setData(movies)
-        }
+
+        Log.d("David","Init recycler view")
+        movies_fragment_rcv.layoutManager = LinearLayoutManager(context)
+        movieAdapter = MoviesAdapter(this@MoviesFragment)
+        movies_fragment_rcv.adapter = movieAdapter
+        movieAdapter.setData(movies)
     }
 
     fun loadMovies(){

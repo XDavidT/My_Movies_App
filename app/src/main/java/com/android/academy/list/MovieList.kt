@@ -35,7 +35,7 @@ class MovieList : AppCompatActivity(), OnMovieClickListener  {
         movies_list_layout.layoutManager = LinearLayoutManager(this)
 
         //build adapter with local context
-        moviesAdapter = MoviesAdapter(this,this)
+        moviesAdapter = MoviesAdapter(this)
 
         //attach the adapter
         movies_list_layout.adapter = moviesAdapter
