@@ -1,9 +1,11 @@
 package com.android.academy.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
@@ -13,8 +15,9 @@ import com.android.academy.movie_model.MovieModel
 import kotlinx.android.synthetic.main.fragment_movies.view.*
 
 class MoviesFragment :Fragment(), OnMovieClickListener{
+    private var listener: OnMovieClickListener? = null
     private lateinit var moviesRcv: RecyclerView
-    private lateinit var movieAdpt: MoviesAdapter
+    private lateinit var movieAdapter: MoviesAdapter
     private val movies: MutableList<MovieModel> = ArrayList()
 
     override fun onCreateView(
@@ -31,14 +34,28 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
     }
 
     override fun onMovieClicked(movieModel: MovieModel) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val detailsFragment = DetailsFragment()
+
+
+    }
+
+    override fun onAttach(context: Context?) {
+        super.onAttach(context)
+        if(context is OnMovieClickListener){
+            listener = context
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
     }
 
     private fun initRecyclerView(){
         context?.let{
-            movieAdpt = MoviesAdapter(it,this@MoviesFragment)
-            moviesRcv.adapter = movieAdpt
-            movieAdpt.setData(movies)
+            movieAdapter = MoviesAdapter(it,this@MoviesFragment)
+            moviesRcv.adapter = movieAdapter
+            movieAdapter.setData(movies)
         }
     }
 

@@ -1,16 +1,15 @@
 package com.android.academy.details.details
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import com.android.academy.R
+import com.android.academy.fragments.DetailsFragment
 import com.android.academy.fragments.MoviesFragment
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlin.random.Random
+import com.android.academy.list.OnMovieClickListener
+import com.android.academy.movie_model.MovieModel
 
-class MainActivity : AppCompatActivity() {
+
+class MainActivity : AppCompatActivity(), OnMovieClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -19,5 +18,10 @@ class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().
             add(R.id.activity_main_frame,moviesFragment).commit()
+    }
+
+    override fun onMovieClicked(movie:MovieModel){
+        val detailsFragment = DetailsFragment()
+     supportFragmentManager.beginTransaction().replace(R.id.activity_main_frame,detailsFragment).commit()
     }
 }
