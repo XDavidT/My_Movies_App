@@ -40,10 +40,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
 
     }
 
-    override fun onMovieClicked(movieModel: MovieModel) {
-        val detailsFragment = DetailsFragment()
-
-
+    override fun onMovieClicked(movie: MovieModel) {
+        listener?.onMovieClicked(movie)
     }
 
     override fun onAttach(context: Context?) {
