@@ -11,29 +11,24 @@ import com.android.academy.movie_model.MovieModel
 
 
 class MainActivity : AppCompatActivity(), OnMovieClickListener {
-    private var tabletFragmentContainer: FrameLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        tabletFragmentContainer = findViewById(R.id.activity_main_tablet_frame)
         val moviesFragment = MoviesFragment()
 
+        //Starting Activity using list of movies in fragment ( in main frame )
         supportFragmentManager.beginTransaction().
             add(R.id.activity_main_frame,moviesFragment).commit()
     }
 
     override fun onMovieClicked(movie:MovieModel){
         val detailsFragment = DetailsFragment.newInstance(movie)
-     supportFragmentManager.beginTransaction().apply {
-         if( tabletFragmentContainer == null){
-             addToBackStack(null)
-             replace(R.id.activity_main_frame,detailsFragment)
-         }
-         else{
-             replace(R.id.activity_main_tablet_frame,detailsFragment)
-         }
-     }.commit()
+
+        //When user click movie, change the details fragment
+        supportFragmentManager.beginTransaction().apply {
+         addToBackStack(null)
+         replace(R.id.activity_main_frame,detailsFragment)
+        }.commit()
     }
 }

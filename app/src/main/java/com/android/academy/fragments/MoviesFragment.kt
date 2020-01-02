@@ -6,15 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
 import com.android.academy.list.MoviesAdapter
 import com.android.academy.list.OnMovieClickListener
 import com.android.academy.movie_model.MovieModel
-import kotlinx.android.synthetic.main.fragment_movies.*
+import kotlinx.android.synthetic.main.movies_rv_fragment.*
 
 class MoviesFragment :Fragment(), OnMovieClickListener{
     private var listener: OnMovieClickListener? = null
@@ -26,7 +24,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_movies,container,false)
+        val view = inflater.inflate(R.layout.movies_rv_fragment,container,false)
 
         Log.d("David","On create view")
         return view

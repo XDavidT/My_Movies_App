@@ -1,6 +1,5 @@
 package com.android.academy.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
-import com.android.academy.list.OnMovieClickListener
 import com.android.academy.movie_model.MovieModel
 
 private const val MOVIE_BUNDLE_KEY= "unique_movie_key"
@@ -38,7 +36,7 @@ class DetailsFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.details_fragment_poster,container,false)
+        val view = inflater.inflate(R.layout.movie_details_fragment,container,false)
 
 
         return view
