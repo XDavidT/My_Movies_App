@@ -2,10 +2,7 @@ package com.android.academy.fragments
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.FrameLayout
 import com.android.academy.R
-import com.android.academy.fragments.DetailsFragment
-import com.android.academy.fragments.MoviesFragment
 import com.android.academy.list.OnMovieClickListener
 import com.android.academy.movie_model.MovieModel
 
