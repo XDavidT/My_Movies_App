@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.academy.R
 import com.android.academy.list.MoviesAdapter
 import com.android.academy.list.OnMovieClickListener
+import com.android.academy.movie_model.MovieContentManager
 import com.android.academy.movie_model.MovieModel
 import kotlinx.android.synthetic.main.movies_rv_fragment.*
 
 class MoviesFragment :Fragment(), OnMovieClickListener{
     private var listener: OnMovieClickListener? = null
     private lateinit var movieAdapter: MoviesAdapter
-    private val movies: MutableList<MovieModel> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -60,11 +60,11 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
         movies_fragment_rcv.layoutManager = LinearLayoutManager(context)
         movieAdapter = MoviesAdapter(this@MoviesFragment)
         movies_fragment_rcv.adapter = movieAdapter
-        movieAdapter.setData(movies)
+        movieAdapter.setData(MovieContentManager.movies)
     }
 
     fun loadMovies(){
-        movies.add(
+        MovieContentManager.addMovie(
             MovieModel(
                 "Jurassic Park",
                 R.drawable.jurassic_world_fallen_kingdom,
@@ -73,7 +73,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                         "to save the animals from extinction."
             )
         )
-        movies.add(
+        MovieContentManager.addMovie(
             MovieModel(
                 "The Meg",
                 R.drawable.the_meg,
@@ -82,7 +82,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                         "a deep sea diver, is hired to save them."
             )
         )
-        movies.add(
+        MovieContentManager.addMovie(
             MovieModel(
                 "The First Purge",
                 R.drawable.the_first_purge,
@@ -92,7 +92,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                         "the violence of oppressors meets the rage of the others."
             )
         )
-        movies.add(
+        MovieContentManager.addMovie(
             MovieModel(
                 "Deadpool 2",
                 R.drawable.deadpool2,
@@ -101,7 +101,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                         " to prevent a time-travelling mercenary from killing Russell."
             )
         )
-        movies.add(
+        MovieContentManager.addMovie(
             MovieModel(
                 "Guardians of the Galaxy",
                 R.drawable.guardiansofthegalaxy,
@@ -110,7 +110,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                         " to stop Ronan."
             )
         )
-        movies.add(
+        MovieContentManager.addMovie(
             MovieModel(
                 "Ocean's 8",
                 R.drawable.oceaneight,
@@ -119,7 +119,7 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                         " worth 150 million dollars, from the Met Gala."
             )
         )
-        movies.add(
+        MovieContentManager.addMovie(
             MovieModel(
                 "Thor: Ragnarok",
                 R.drawable.thor,
