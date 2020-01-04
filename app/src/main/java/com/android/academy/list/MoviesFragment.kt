@@ -69,6 +69,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                 "Jurassic Park",
                 R.drawable.jurassic_world_fallen_kingdom,
                 R.drawable.jurassicworld_cover,
+                "June 7, 2018",
+                "https://www.youtube.com/watch?v=vn9mMeWcgoM",
                 "After a volcano eruption proves to be a threat for the dinosaurs, " +
                         "Owen and Claire reach the defunct Jurassic World, a theme park, " +
                         "to save the animals from extinction."
@@ -79,6 +81,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                 "The Meg",
                 R.drawable.the_meg,
                 R.drawable.the_meg_cover,
+                "August 16, 2018",
+                "https://www.youtube.com/watch?v=bsLk0NPRFAc",
                 "When the members of an underwater research facility are under threat " +
                         "owing to a 75 feet prehistoric shark, Jonas Taylor, " +
                         "a deep sea diver, is hired to save them."
@@ -89,6 +93,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                 "The First Purge",
                 R.drawable.the_first_purge,
                 R.drawable.thefirstpurge_cover,
+                "July 4, 2018 ",
+                "https://www.youtube.com/watch?v=UL29y0ah92w",
                 "To push the crime rate below one percent for the rest of the year, " +
                         "the New Founding Fathers of America test a sociological theory that" +
                         " vents aggression for one night in one isolated community. But when " +
@@ -100,6 +106,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                 "Deadpool 2",
                 R.drawable.deadpool2,
                 R.drawable.deadpool2_cover,
+                "May 1, 2018",
+                "https://www.youtube.com/watch?v=D86RtevtfrA",
                 "Deadpool protects a young mutant Russell from the authorities and" +
                         " gets thrown in prison. However, he escapes and forms a team of mutants" +
                         " to prevent a time-travelling mercenary from killing Russell."
@@ -110,6 +118,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                 "Guardians of the Galaxy",
                 R.drawable.guardiansofthegalaxy,
                 R.drawable.guardians_of_the_galaxy_cover,
+                "July 31, 2014 ",
+                "https://www.youtube.com/watch?v=d96cjJhvlMA",
                 "Peter escapes from the planet Morag with a valuable orb that Ronan" +
                         " the Accuser wants. He eventually forms a group with unwilling heroes" +
                         " to stop Ronan."
@@ -120,6 +130,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                 "Ocean's 8",
                 R.drawable.oceaneight,
                 R.drawable.ocean_8_cover,
+                "June 5, 2018",
+                "https://www.youtube.com/watch?v=n5LoVcVsiSQ",
                 "Debbie Ocean is released from jail after serving a prison sentence." +
                         " She assembles a special crew of seven women to steal a diamond necklace," +
                         " worth 150 million dollars, from the Met Gala."
@@ -130,6 +142,8 @@ class MoviesFragment :Fragment(), OnMovieClickListener{
                 "Thor: Ragnarok",
                 R.drawable.thor,
                 R.drawable.thor_cover,
+                "November 2, 2017",
+                "https://www.youtube.com/watch?v=ue80QwXMRHg",
                 "Deprived of his mighty hammer Mjolnir, Thor must escape the" +
                         " other side of the universe to save his home, Asgard, from Hela," +
                         " the goddess of death."

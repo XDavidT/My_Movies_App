@@ -1,6 +1,7 @@
 package com.android.academy.details
 
-import android.media.Image
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.fragment.app.Fragment
 import com.android.academy.R
 import com.android.academy.movie_model.MovieModel
 
+
 private const val MOVIE_BUNDLE_KEY= "unique_movie_key"
 
 class DetailsFragment : Fragment(){
@@ -22,6 +24,7 @@ class DetailsFragment : Fragment(){
     private lateinit var releaseDate: TextView
     private lateinit var trailerButton: Button
     private lateinit var overviewText: TextView
+    private lateinit var trailerLink: String
 
     companion object{
         fun newInstance(movie: MovieModel): DetailsFragment{
@@ -50,7 +53,11 @@ class DetailsFragment : Fragment(){
         initViews(view)
         movie?.let(::loadMovie)
         Log.d("David","onViewCreated - details fragment")
-
+        trailerButton.setOnClickListener{
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(trailerLink)
+            startActivity(intent)
+        }
     }
 
 
@@ -59,7 +66,7 @@ class DetailsFragment : Fragment(){
         coverImage.setImageResource(movie.imageCover)
         titleText.text = movie.name
         overviewText.text = movie.description
-
+        trailerLink = movie.trailerUrl
     }
 
     private fun initViews(view:View){
