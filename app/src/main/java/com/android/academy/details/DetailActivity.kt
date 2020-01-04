@@ -1,17 +1,20 @@
-package com.android.academy
+package com.android.academy.details
 
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.android.academy.fragments.SimplePagerAdapter
+import com.android.academy.R
 import kotlinx.android.synthetic.main.activity_detail.*
 
 class DetailActivity : AppCompatActivity() {
     companion object{
+
         const val CURR_IDX = "idx"
+
         fun open(context: Context, currentIdx: Int){
-            val activityDetails = Intent(context,DetailActivity::class.java)
+            val activityDetails = Intent(context,
+                DetailActivity::class.java)
             activityDetails.putExtra(CURR_IDX,currentIdx)
             context.startActivity(activityDetails)
         }

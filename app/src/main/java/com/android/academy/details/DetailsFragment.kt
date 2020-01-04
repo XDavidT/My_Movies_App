@@ -1,5 +1,6 @@
-package com.android.academy.fragments
+package com.android.academy.details
 
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -16,6 +17,7 @@ private const val MOVIE_BUNDLE_KEY= "unique_movie_key"
 
 class DetailsFragment : Fragment(){
     private lateinit var posterImage: ImageView
+    private lateinit var coverImage: ImageView
     private lateinit var titleText: TextView
     private lateinit var releaseDate: TextView
     private lateinit var trailerButton: Button
@@ -54,12 +56,15 @@ class DetailsFragment : Fragment(){
 
     fun loadMovie(movie:MovieModel){
         posterImage.setImageResource(movie.imageRes)
+        coverImage.setImageResource(movie.imageCover)
         titleText.text = movie.name
         overviewText.text = movie.description
+
     }
 
     private fun initViews(view:View){
         posterImage = view.findViewById(R.id.posterImage)
+        coverImage = view.findViewById(R.id.details_cover_image)
         titleText = view.findViewById(R.id.movie_title)
         releaseDate = view.findViewById(R.id.relaseDate)
         trailerButton = view.findViewById(R.id.trailer_button)

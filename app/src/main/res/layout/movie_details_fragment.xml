@@ -10,17 +10,17 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".fragments.MainActivity">
+        tools:context=".MainActivity">
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/details_cover_image"
             android:layout_width="match_parent"
             android:layout_height="230dp"
             android:contentDescription="@string/cover_photo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/cover" />
+            app:srcCompat="@drawable/avengares_cover" />
 
         <ImageView
             android:id="@+id/posterImage"
@@ -31,8 +31,8 @@
             android:onClick="popFunFact"
             android:contentDescription="@string/movie_poster"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8"
-            app:srcCompat="@drawable/main" />
+            app:layout_constraintTop_toBottomOf="@+id/details_cover_image"
+            app:srcCompat="@drawable/avengers_main" />
 
         <TextView
             android:id="@+id/movie_title"
@@ -47,7 +47,7 @@
             android:background="@drawable/textview_border"
             app:autoSizeTextType="uniform"
             app:layout_constraintStart_toEndOf="@+id/posterImage"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+            app:layout_constraintTop_toBottomOf="@+id/details_cover_image" />
 
         <TextView
             android:id="@+id/textView2"
