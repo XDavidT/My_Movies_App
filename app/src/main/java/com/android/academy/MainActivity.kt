@@ -1,13 +1,12 @@
 package com.android.academy
 
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.AdapterView
+import com.android.academy.async.AsyncActivity
 import com.android.academy.details.DetailActivity
 import com.android.academy.list.MoviesFragment
 import com.android.academy.list.OnMovieClickListener
@@ -36,7 +35,8 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId){
             R.id.menu_asytask_activity ->{
-                val intent = Intent(this,AsyncActivity::class.java)
+                val intent = Intent(this,
+                    AsyncActivity::class.java)
                 startActivity(intent)
                 true
             }

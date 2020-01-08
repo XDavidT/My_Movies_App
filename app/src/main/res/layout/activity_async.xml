@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgThreadActivity"
-    tools:context=".AsyncActivity">
+    tools:context=".async.AsyncActivity">
 
     <Button
         android:id="@+id/async_create"
