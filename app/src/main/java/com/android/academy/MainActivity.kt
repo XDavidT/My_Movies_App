@@ -1,7 +1,13 @@
 package com.android.academy
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.widget.AdapterView
 import com.android.academy.details.DetailActivity
 import com.android.academy.list.MoviesFragment
 import com.android.academy.list.OnMovieClickListener
@@ -19,6 +25,26 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener {
         //Starting Activity using list of movies in fragment ( in avengers_main frame )
         supportFragmentManager.beginTransaction().
             add(R.id.activity_main_frame,moviesFragment).commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater: MenuInflater = menuInflater
+        inflater.inflate(R.menu.thread_options,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId){
+            R.id.menu_asytask_activity ->{
+                val intent = Intent(this,AsyncActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.menu_thread_activity->{
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onMovieClicked(movie:MovieModel) {
