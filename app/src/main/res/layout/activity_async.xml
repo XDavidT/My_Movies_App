@@ -25,19 +25,19 @@
         android:layout_margin="15dp"
         app:layout_constraintStart_toEndOf="@+id/async_create"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/async_end"/>
+        app:layout_constraintEnd_toStartOf="@id/async_cancel"/>
 
     <Button
-        android:id="@+id/async_end"
+        android:id="@+id/async_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="End"
         android:layout_margin="15dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        android:text="@android:string/cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/async_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Async Task"

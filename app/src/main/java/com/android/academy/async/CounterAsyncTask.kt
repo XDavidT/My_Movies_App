@@ -8,12 +8,11 @@ class CounterAsyncTask(
 ) : AsyncTask<Void, Int, Boolean>(){
 
     override fun onPreExecute() {
-
         iAsyncTaskEvents.onPreExecute()
     }
 
     override fun doInBackground(vararg params: Void?): Boolean {
-        for(i in 1..10){
+        for(i in 1..20){
             Thread.sleep(1000)
             publishProgress(i)
         }
@@ -27,6 +26,13 @@ class CounterAsyncTask(
     }
 
     override fun onPostExecute(result: Boolean?) {
-        super.onPostExecute(result)
+        result?.let {
+            iAsyncTaskEvents.onPostExecute(it)
+
+        }
+    }
+
+    override fun onCancelled() {
+        iAsyncTaskEvents.onCancel()
     }
 }

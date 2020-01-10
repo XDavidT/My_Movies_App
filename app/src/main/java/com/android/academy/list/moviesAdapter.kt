@@ -31,19 +31,19 @@ class MoviesAdapter(
     private val asyncListDiffer = AsyncListDiffer<MovieModel>(this,MoviesDiffUtilCallback())
 
     fun setData(newItems: List<MovieModel>){
-        Log.d("David","setData: ${newItems.size}")
+//        Log.d("David","setData: ${newItems.size}")
         asyncListDiffer.submitList(newItems)
-        Log.d("David","setData: Done")
+//        Log.d("David","setData: Done")
     }
 
     override fun getItemCount(): Int {
-        Log.d("David","getItemCount: ${asyncListDiffer.currentList.size}")
+//        Log.d("David","getItemCount: ${asyncListDiffer.currentList.size}")
 
         return asyncListDiffer.currentList.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        Log.d("David","onCreateViewHolder")
+//        Log.d("David","onCreateViewHolder")
 
         return ViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.item_movie,parent,false),
