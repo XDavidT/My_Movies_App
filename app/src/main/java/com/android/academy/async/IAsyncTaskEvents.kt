@@ -5,5 +5,4 @@ interface IAsyncTaskEvents{
     fun onPostExecute()
     fun onProgressUpdate(num: Int)
     fun onCancel()
-
 }
