@@ -4,7 +4,8 @@ import android.os.AsyncTask
 import kotlin.concurrent.thread
 
 class CounterAsyncTask(
-    val iAsyncTaskEvents: IAsyncTaskEvents
+    val iAsyncTaskEvents: IAsyncTaskEvents,
+    var currentNumber: Int
 ) : AsyncTask<Void, Int, Boolean>(){
 
     override fun onPreExecute() {
@@ -12,9 +13,10 @@ class CounterAsyncTask(
     }
 
     override fun doInBackground(vararg params: Void?): Boolean {
-        for(i in 1..20){
+        while(currentNumber<20){
+            currentNumber = currentNumber.inc()
             Thread.sleep(1000)
-            publishProgress(i)
+            publishProgress(currentNumber)
         }
         return true
     }

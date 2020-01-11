@@ -8,22 +8,63 @@ import kotlinx.android.synthetic.main.activity_async.*
 
 class AsyncActivity : AppCompatActivity(), IAsyncTaskEvents {
     private lateinit var newCounterTask: CounterAsyncTask
+    private lateinit var currentNumber: Number
+    private lateinit var currentStatus: String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_async)
+
+        if(savedInstanceState==null){
+            currentNumber = 0
+        }
+
+        //Create Task
         async_create.setOnClickListener {
-
-            newCounterTask = CounterAsyncTask(this)
-            Log.d("David",newCounterTask.toString())
+            createTask()
         }
+
+        //Start Task
         async_start.setOnClickListener {
-            newCounterTask.execute()
+            startTask()
         }
+
+        //Cancel Task
         async_cancel.setOnClickListener{
-            newCounterTask.cancel(true)
-
+            stopTask()
         }
 
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("status",currentStatus)
+        outState.putInt("currNum",currentNumber.toInt())
+
+        Log.d("David","onSaveInstanceState")
+        Log.d("David","onSaveInstanceState-> status: "+currentStatus +
+        " Current number: "+currentNumber)
+        stopTask()
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        savedInstanceState.getString("status")?.let{
+            currentStatus = it
+        }
+        currentNumber = savedInstanceState.getInt("currNum",0)
+
+        Log.d("David","onRestoreInstanceState - status: "+currentStatus+
+        " number is: "+currentNumber)
+
+
+        if(currentStatus == "create")
+            createTask()
+        else if(currentStatus == "start"){
+            createTask()
+            startTask()
+        }
+
+        super.onRestoreInstanceState(savedInstanceState)
+        Log.d("David","onRestoreInstanceState")
     }
 
     override fun onPreExecute() {
@@ -32,6 +73,7 @@ class AsyncActivity : AppCompatActivity(), IAsyncTaskEvents {
 
     override fun onProgressUpdate(num: Int) {
         async_textView.text = num.toString()
+        currentNumber = num
     }
 
     override fun onPostExecute(boolean: Boolean) {
@@ -42,6 +84,22 @@ class AsyncActivity : AppCompatActivity(), IAsyncTaskEvents {
 
     override fun onCancel() {
         async_textView.text = "Ready !"
+    }
+
+    fun createTask(){
+        currentStatus = "create"
+        Log.d("David","Status: "+currentStatus)
+        newCounterTask = CounterAsyncTask(this,currentNumber.toInt())
+    }
+    fun startTask(){
+        currentStatus = "start"
+        Log.d("David","Status: "+currentStatus)
+        newCounterTask.execute()
+    }
+
+    fun stopTask(){
+        currentStatus = "stop"
+        newCounterTask.cancel(true)
     }
 }
 
