@@ -1,4 +1,4 @@
-package com.android.academy.async
+package com.android.academy.threads
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,8 @@ import android.util.Log
 import com.android.academy.R
 import kotlinx.android.synthetic.main.activity_async.*
 
-class AsyncActivity : AppCompatActivity(), IAsyncTaskEvents {
+class AsyncActivity : AppCompatActivity(),
+    IAsyncTaskEvents {
     private lateinit var newCounterTask: CounterAsyncTask
     private lateinit var currentNumber: Number
     private lateinit var currentStatus: String
@@ -89,7 +90,10 @@ class AsyncActivity : AppCompatActivity(), IAsyncTaskEvents {
     fun createTask(){
         currentStatus = "create"
         Log.d("David","Status: "+currentStatus)
-        newCounterTask = CounterAsyncTask(this,currentNumber.toInt())
+        newCounterTask = CounterAsyncTask(
+            this,
+            currentNumber.toInt()
+        )
     }
     fun startTask(){
         currentStatus = "start"

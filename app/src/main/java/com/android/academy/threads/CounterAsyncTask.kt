@@ -1,7 +1,6 @@
-package com.android.academy.async
+package com.android.academy.threads
 
 import android.os.AsyncTask
-import kotlin.concurrent.thread
 
 class CounterAsyncTask(
     val iAsyncTaskEvents: IAsyncTaskEvents,

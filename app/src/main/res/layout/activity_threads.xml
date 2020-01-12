@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bgThreadActivity"
-    tools:context=".threads.AsyncActivity">
+    tools:context=".threads.ThreadsActivity">
 
     <Button
-        android:id="@+id/async_create"
+        android:id="@+id/thread_create"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Create"
@@ -17,17 +18,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/async_start"
+        android:id="@+id/thread_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Start"
         android:layout_margin="15dp"
-        app:layout_constraintStart_toEndOf="@+id/async_create"
+        app:layout_constraintStart_toEndOf="@+id/thread_create"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/async_cancel"/>
+        app:layout_constraintEnd_toStartOf="@id/thread_cancel"/>
 
     <Button
-        android:id="@+id/async_cancel"
+        android:id="@+id/thread_cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -36,14 +37,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/async_textView"
+        android:id="@+id/thread_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Async Task"
         android:textSize="30dp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        app:layout_constraintTop_toBottomOf="@id/async_start"
+        app:layout_constraintTop_toBottomOf="@id/thread_start"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
