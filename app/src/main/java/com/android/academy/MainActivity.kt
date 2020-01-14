@@ -12,6 +12,7 @@ import com.android.academy.list.MoviesFragment
 import com.android.academy.list.OnMovieClickListener
 import com.android.academy.movie_model.MovieModel
 import com.android.academy.movie_model.MoviesContent
+import com.android.academy.threads.ThreadsActivity
 
 
 class MainActivity : AppCompatActivity(), OnMovieClickListener {
@@ -41,6 +42,9 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener {
                 true
             }
             R.id.menu_thread_activity->{
+                val intent = Intent(this,
+                    ThreadsActivity::class.java)
+                startActivity(intent)
                 true
             }
             else -> super.onOptionsItemSelected(item)
