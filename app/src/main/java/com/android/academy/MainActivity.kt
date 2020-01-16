@@ -47,6 +47,12 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener {
                 startActivity(intent)
                 true
             }
+            R.id.menu_bgservice->{
+                val intent = Intent(this,
+                    activity_bgservice::class.java)
+                startActivity(intent)
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

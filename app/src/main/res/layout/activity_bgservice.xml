@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_bgservice">
+
+
+    <TextView
+        android:id="@+id/bgs_the_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="The prgoress"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bgs_progress_status_text"
+        android:layout_marginTop="100dp"
+        />
+
+    <TextView
+        android:id="@+id/bgs_progress_status_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="40%"
+        app:layout_constraintTop_toBottomOf="@id/bgs_the_progress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bgs_start_srvc"
+        />
+    <Button
+        android:id="@+id/bgs_start_ints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bgs_start_srvc"/>
+
+    <Button
+        android:id="@+id/bgs_start_srvc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bgs_start_ints"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
