@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_bgservice"></activity>
+        <activity android:name=".bg_service.activity_bgservice"></activity>
         <activity android:name=".threads.ThreadsActivity" />
         <activity android:name=".threads.AsyncActivity" />
         <activity android:name=".details.DetailActivity" />

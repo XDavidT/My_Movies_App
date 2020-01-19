@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
+import com.android.academy.bg_service.activity_bgservice
 import com.android.academy.threads.AsyncActivity
 import com.android.academy.details.DetailActivity
 import com.android.academy.list.MoviesFragment

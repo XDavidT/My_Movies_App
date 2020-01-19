@@ -1,4 +1,4 @@
-package com.android.academy
+package com.android.academy.bg_service
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.android.academy.R
 import kotlinx.android.synthetic.main.activity_bgservice.*
 
 class activity_bgservice : AppCompatActivity() {
@@ -40,6 +41,15 @@ class activity_bgservice : AppCompatActivity() {
         super.onResume()
     }
 
+    override fun onPause() {
+        backgroundProgressReceiver?.let{
+            unregisterReceiver(backgroundProgressReceiver)
+        }
+        super.onPause()
+    }
+
+    
+
     fun startService(){
 
     }
@@ -51,7 +61,7 @@ class activity_bgservice : AppCompatActivity() {
     inner class BackgroundProgressReceiver : BroadcastReceiver(){
         override fun onReceive(p0: Context?, p1: Intent?) {
             val progress = intent.getIntExtra(PROGRESS_VALUE_KEY,-1)
-
+            bgs_progress_status_text.text = progress.toString()
         }
     }
 }
