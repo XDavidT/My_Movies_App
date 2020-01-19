@@ -24,10 +24,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="40%"
-        app:layout_constraintTop_toBottomOf="@id/bgs_the_progress"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bgs_the_progress" />
     <Button
         android:id="@+id/bgs_start_ints"
         android:layout_width="wrap_content"

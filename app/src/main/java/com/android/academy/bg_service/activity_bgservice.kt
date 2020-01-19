@@ -55,11 +55,11 @@ class activity_bgservice : AppCompatActivity() {
     }
 
     fun startIntsService(){
-
+        startService(Intent(this,HardJobIntentService::class.java))
     }
 
     inner class BackgroundProgressReceiver : BroadcastReceiver(){
-        override fun onReceive(p0: Context?, p1: Intent?) {
+        override fun onReceive(context: Context?, intent: Intent) {
             val progress = intent.getIntExtra(PROGRESS_VALUE_KEY,-1)
             bgs_progress_status_text.text = progress.toString()
         }
