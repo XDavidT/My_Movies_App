@@ -54,7 +54,8 @@ class activity_bgservice : AppCompatActivity() {
     
 
     fun startService(){
-
+        Log.d("David","startService")
+        startService(Intent(this,HardJobService::class.java))
     }
 
     fun startIntsService(){

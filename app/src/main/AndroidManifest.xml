@@ -22,6 +22,7 @@
         </activity>
 
         <service android:name=".bg_service.HardJobIntentService" />
+        <service android:name=".bg_service.HardJobService" />
     </application>
 
 </manifest>
