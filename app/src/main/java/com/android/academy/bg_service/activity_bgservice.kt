@@ -6,6 +6,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.android.academy.R
 import kotlinx.android.synthetic.main.activity_bgservice.*
 
@@ -22,6 +23,7 @@ class activity_bgservice : AppCompatActivity() {
     private fun subscribeForProgressUpdates(){
         if(backgroundProgressReceiver == null) {
             backgroundProgressReceiver = BackgroundProgressReceiver()
+            Log.d("David","subscribeForProgressUpdates")
         }
         val progressUpdateActionFilter = IntentFilter(PROGRESS_UPDATE_ACTION)
         registerReceiver(backgroundProgressReceiver,progressUpdateActionFilter)
@@ -37,6 +39,7 @@ class activity_bgservice : AppCompatActivity() {
     }
 
     override fun onResume() {
+        Log.d("David","onResume")
         subscribeForProgressUpdates()
         super.onResume()
     }
@@ -55,6 +58,7 @@ class activity_bgservice : AppCompatActivity() {
     }
 
     fun startIntsService(){
+        Log.d("David","startIntsService")
         startService(Intent(this,HardJobIntentService::class.java))
     }
 
