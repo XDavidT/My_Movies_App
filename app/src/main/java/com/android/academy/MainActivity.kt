@@ -14,6 +14,7 @@ import com.android.academy.list.OnMovieClickListener
 import com.android.academy.movie_model.MovieModel
 import com.android.academy.movie_model.MoviesContent
 import com.android.academy.threads.ThreadsActivity
+import com.android.academy.work_manager.WorkManagerActivity
 
 
 class MainActivity : AppCompatActivity(), OnMovieClickListener {
@@ -51,6 +52,12 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener {
             R.id.menu_bgservice->{
                 val intent = Intent(this,
                     activity_bgservice::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.menu_workmanager->{
+                val intent = Intent(this,
+                    WorkManagerActivity::class.java)
                 startActivity(intent)
                 true
             }
