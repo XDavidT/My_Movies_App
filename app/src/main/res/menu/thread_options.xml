@@ -10,4 +10,7 @@
     <item
         android:id="@+id/menu_bgservice"
         android:title="Open Background Service" />
+    <item
+        android:id="@+id/menu_workmanager"
+        android:title="Open Work Manager" />
 </menu>

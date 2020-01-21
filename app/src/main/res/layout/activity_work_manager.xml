@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".work_manager.WorkManager">
+
+    <TextView
+        android:id="@+id/work_manager_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Work Manager"
+        android:textSize="30dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/work_manager_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Worker process:"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/work_manager_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/work_manager_process"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0%"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/work_manager_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Switch
+        android:id="@+id/work_switch_network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:showText="false"
+        android:text="Require Network"
+        android:switchPadding="200dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/work_manager_process"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Switch
+        android:id="@+id/work_switch_charge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Require Charge"
+        android:switchPadding="210dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/work_switch_network"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Switch
+        android:id="@+id/work_switch_battery_not_low"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Require battery isn't low"
+        android:switchPadding="160dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintTop_toBottomOf="@id/work_switch_charge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <Button
+        android:id="@+id/work_manager_enqueue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enqueue Work"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/work_switch_battery_not_low"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/work_manager_cancel_work"
+         />
+
+    <Button
+        android:id="@+id/work_manager_cancel_work"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancel Work"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintTop_toBottomOf="@id/work_switch_battery_not_low"
+        app:layout_constraintStart_toEndOf="@id/work_manager_enqueue"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
