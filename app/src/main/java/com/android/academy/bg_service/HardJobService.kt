@@ -15,6 +15,7 @@ class HardJobService : Service(){
     }
 
     override fun onCreate() {
+        Log.d("David", "HardJobService->OnCreate")
         val thread = HandlerThread(TAG,Process.THREAD_PRIORITY_BACKGROUND)
         thread.start()
 
@@ -23,11 +24,13 @@ class HardJobService : Service(){
     }
 
     override fun onDestroy() {
+        Log.d("David", "HardJobService->onDestroy")
         isDestroyed = true
         super.onDestroy()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
+        Log.d("David", "HardJobService->onStartCommand")
         isDestroyed = false
         serviceHandler?.let {
             val message = it.obtainMessage()
@@ -41,7 +44,7 @@ class HardJobService : Service(){
         override fun handleMessage(msg: Message) {
             Log.d("David","HardJobService-> handleMessage")
             var i = 0
-            while(i<0 && !isDestroyed){
+            while(i <= 100 && !isDestroyed){
                 SystemClock.sleep(100)
                 val intent = Intent(activity_bgservice.PROGRESS_UPDATE_ACTION)
                 intent.putExtra(activity_bgservice.PROGRESS_VALUE_KEY,i)
