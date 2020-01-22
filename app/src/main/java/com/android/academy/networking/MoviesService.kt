@@ -1,6 +1,6 @@
 package com.android.academy.networking
 
-import MoviesResult
+import MoviesRootResult
 import com.android.academy.R
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -8,24 +8,29 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface MoviesService {
-    companion object{
+    companion object {
         private const val BASE_URL = "https://api.themoviedb.org"
-        const val BASE_API_URL = "$BASE_URL/3"
-        private const val POPULAR_MOVIES = "/movie/popular"
+        const val BASE_API_URL = "$BASE_URL/3/"
+        private const val POPULAR_MOVIES = "movie/popular"
 
-        private const val KEQ_QUERY = "?api_key=${R.string.themoviedb_api_v3}"
+        private const val KEQ_QUERY = "?api_key=add9f6bd814488dd0c9172351b2a9f66"
 
-        private const val popularMoviesQuery = POPULAR_MOVIES+ KEQ_QUERY
+        private const val popularMoviesQuery = POPULAR_MOVIES + KEQ_QUERY
     }
 
     @GET(popularMoviesQuery)
-    abstract fun loadPopularMovies(): Call<MoviesResult>
+    fun loadPopularMovies(): Call<MoviesRootResult>
 }
 
 object RestClient {
 
-    val retrofit = Retrofit.Builder().baseUrl(MoviesService.BASE_API_URL)
+    private val retrofitClient = Retrofit.Builder().baseUrl(MoviesService.BASE_API_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    val moviesService =  retrofit.create(MoviesService::class.java)
+
+    private val moviesService = retrofitClient.create(MoviesService::class.java)
+
+    fun getPopularMovies(): Call<MoviesRootResult> {
+        return moviesService.loadPopularMovies()
+    }
 }
