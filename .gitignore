@@ -7,4 +7,4 @@
 /captures
 .externalNativeBuild
 .cxx
-echo "**/*/res/values/secrets.xml" > .gitignore
+echo "values/secrets.xml" > .gitignore
