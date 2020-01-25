@@ -1,7 +1,10 @@
+import com.android.academy.movie_model.MovieModel
+import com.android.academy.networking.RestClient
+import com.android.academy.networking.VideoResult
 import com.google.gson.annotations.SerializedName
+import javax.security.auth.callback.Callback
 
 data class MoviesResult (
-
 	@SerializedName("popularity") val popularity : Double,
 	@SerializedName("vote_count") val vote_count : Int,
 	@SerializedName("video") val video : Boolean,
@@ -16,4 +19,20 @@ data class MoviesResult (
 	@SerializedName("vote_average") val vote_average : Double,
 	@SerializedName("overview") val overview : String,
 	@SerializedName("release_date") val release_date : String
-)
+) {
+	companion object{
+		private const val BASE_URL_PHOTO = "https://image.tmdb.org/t/p"
+		private const val BASE_W500 = "$BASE_URL_PHOTO/w500"
+		private const val BASE_ORIGINAL = "$BASE_URL_PHOTO/original"
+	}
+	fun toMovieModel():MovieModel{
+		return MovieModel(
+			title,
+			BASE_W500+poster_path,
+			BASE_ORIGINAL+backdrop_path,
+			release_date,
+			"MyString",
+			overview
+		)
+	}
+}

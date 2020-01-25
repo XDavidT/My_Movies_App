@@ -13,6 +13,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
 import com.android.academy.movie_model.MovieModel
+import com.bumptech.glide.Glide
 
 
 private const val MOVIE_BUNDLE_KEY= "unique_movie_key"
@@ -62,8 +63,19 @@ class DetailsFragment : Fragment(){
 
 
     fun loadMovie(movie:MovieModel){
-        posterImage.setImageResource(movie.imageRes)
-        coverImage.setImageResource(movie.imageCover)
+
+        //Loading from URL
+        Glide
+            .with(this)
+            .load(movie.imagePoster)
+            .placeholder(R.drawable.progress_animation)
+            .into(posterImage)
+        Glide
+            .with(this)
+            .load(movie.imageCover)
+            .placeholder(R.drawable.progress_animation)
+            .into(coverImage)
+
         titleText.text = movie.name
         overviewText.text = movie.description
         trailerLink = movie.trailerUrl
