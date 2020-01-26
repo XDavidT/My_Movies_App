@@ -62,7 +62,7 @@ class DetailsFragment : Fragment(){
     }
 
 
-    fun loadMovie(movie:MovieModel){
+    private fun loadMovie(movie:MovieModel){
 
         //Loading from URL
         Glide

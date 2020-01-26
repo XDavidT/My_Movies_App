@@ -1,8 +1,5 @@
 import com.android.academy.movie_model.MovieModel
-import com.android.academy.networking.RestClient
-import com.android.academy.networking.VideoResult
 import com.google.gson.annotations.SerializedName
-import javax.security.auth.callback.Callback
 
 data class MoviesResult (
 	@SerializedName("popularity") val popularity : Double,
@@ -27,6 +24,7 @@ data class MoviesResult (
 	}
 	fun toMovieModel():MovieModel{
 		return MovieModel(
+			id,
 			title,
 			BASE_W500+poster_path,
 			BASE_ORIGINAL+backdrop_path,

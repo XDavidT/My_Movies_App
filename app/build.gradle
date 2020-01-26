@@ -3,7 +3,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
-
+repositories {
+    mavenCentral()
+    google()
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"

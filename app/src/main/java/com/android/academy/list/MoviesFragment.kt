@@ -3,8 +3,8 @@ package com.android.academy.list
 import MoviesRootResult
 import android.content.Context
 import android.os.Bundle
-import android.os.SystemClock
 import android.util.Log
+import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -32,14 +32,14 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
     ): View? {
         val view = inflater.inflate(R.layout.movies_rv_fragment, container, false)
 
-        Log.d("David", "On create view")
+        Log.d("David", "MoviesFragment->onCreateView")
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loadMovies()
-        Log.d("David", "onViewCreated")
+        Log.d("David", "MoviesFragment->onViewCreated")
 
     }
 
@@ -65,18 +65,18 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
         movieAdapter = MoviesAdapter(this@MoviesFragment,this@MoviesFragment)
         movies_fragment_rcv.adapter = movieAdapter
         Log.d("David","initRecyclerView -> Set Data")
-        movieAdapter.setData(MoviesContent.movies)
+        movieAdapter.setData(MoviesContent.getMoviesList())
     }
 
-    fun loadMovies() {
+    private fun loadMovies() {
         Log.d("David", "loadMovies")
 
         RestClient.getPopularMovies()
             .enqueue(object : Callback<MoviesRootResult> {
+
                 override fun onFailure(call: Call<MoviesRootResult>, t: Throwable) {
                     Log.d("David", "Fail !")
                 }
-
                 override fun onResponse(
                     call: Call<MoviesRootResult>,
                     response: Response<MoviesRootResult>
@@ -85,8 +85,9 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
                     if (response.isSuccessful) {
                         Log.d("David", "It's OK !")
                         response.body()?.results?.let{
-                            val list = it.map { moviesResult ->
-                                moviesResult.toMovieModel()
+                            val list = SparseArray<MovieModel>()
+                            it.forEach {moviesResult->
+                                list.append(moviesResult.id,moviesResult.toMovieModel())
                             }
                             MoviesContent.addMovieList(list)
                             Log.d("David","We done here !")

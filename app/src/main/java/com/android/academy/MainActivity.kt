@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener {
     }
 
     override fun onMovieClicked(movie:MovieModel) {
-        DetailActivity.open(this, MoviesContent.movies.indexOf(movie))
+        DetailActivity.open(this, MoviesContent.movies.indexOfValue(movie))
 //        val detailsFragment = DetailsFragment.newInstance(movie)
 //        //When user click movie, change the details fragment
 //        supportFragmentManager.beginTransaction().apply {

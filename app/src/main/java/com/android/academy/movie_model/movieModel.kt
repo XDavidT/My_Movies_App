@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class MovieModel(
+    val id: Int,
     val name: String,
     val imagePoster: String,
     val imageCover: String,
