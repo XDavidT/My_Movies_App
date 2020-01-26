@@ -23,4 +23,10 @@ object MoviesContent {
         clear()
         movies = movieList
     }
+
+    fun setTrailer(movieID: Int,trailerUrl: String){
+        val currentMovie = movies.get(movieID)
+        currentMovie.trailerUrl = trailerUrl
+        movies.put(movieID,currentMovie)
+    }
 }

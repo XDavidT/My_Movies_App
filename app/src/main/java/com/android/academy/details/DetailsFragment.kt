@@ -13,7 +13,13 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
 import com.android.academy.movie_model.MovieModel
+import com.android.academy.movie_model.MoviesContent
+import com.android.academy.networking.RestClient
+import com.android.academy.networking.VideoResult
 import com.bumptech.glide.Glide
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 private const val MOVIE_BUNDLE_KEY= "unique_movie_key"
@@ -63,7 +69,6 @@ class DetailsFragment : Fragment(){
 
 
     private fun loadMovie(movie:MovieModel){
-
         //Loading from URL
         Glide
             .with(this)
@@ -78,7 +83,32 @@ class DetailsFragment : Fragment(){
 
         titleText.text = movie.name
         overviewText.text = movie.description
-        trailerLink = movie.trailerUrl
+
+
+        Log.d("David","Load trailer...... !!")
+        if(movie.trailerUrl =="") {
+            RestClient.getVideosToMovies(movie.id).enqueue(object : Callback<VideoResult> {
+                override fun onFailure(call: Call<VideoResult>, t: Throwable) {
+                    Log.d("David", "Fail to get trailer link !")
+                }
+
+                override fun onResponse(call: Call<VideoResult>, response: Response<VideoResult>) {
+                    if (response.isSuccessful) {
+                        response.body()?.getDefaultTrailer().let{
+                            if (it != null) {
+//                                MoviesContent.movies.put(movie.id)
+                                trailerLink = it
+                                MoviesContent.setTrailer(movie.id,it)
+                                Log.d("David","Link updated !!->$it")
+                            }
+                        }
+                    }
+                }
+            })
+        } else{
+            Log.d("David","Already got link...")
+            trailerLink = movie.trailerUrl
+        }
     }
 
     private fun initViews(view:View){

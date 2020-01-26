@@ -29,7 +29,7 @@ data class MoviesResult (
 			BASE_W500+poster_path,
 			BASE_ORIGINAL+backdrop_path,
 			release_date,
-			"MyString",
+			"",
 			overview
 		)
 	}

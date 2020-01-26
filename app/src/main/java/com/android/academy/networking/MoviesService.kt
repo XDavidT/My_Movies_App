@@ -23,7 +23,7 @@ interface MoviesService {
     @GET(popularMoviesQuery)
     fun loadPopularMovies(): Call<MoviesRootResult>
 
-    @GET("$MOVIES_PATH{movie_id}$VIDEOS_SUFFIX")
+    @GET("$MOVIES_PATH{movie_id}$VIDEOS_SUFFIX$KEQ_QUERY")
     fun loadVideosToMovie(@Path("movie_id") movie_id:Int): Call<VideoResult>
 }
 

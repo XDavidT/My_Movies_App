@@ -11,6 +11,6 @@ data class MovieModel(
     val imagePoster: String,
     val imageCover: String,
     val releaseDate: String,
-    val trailerUrl: String,
+    var trailerUrl: String,
     val description: String?
 ) : Parcelable
