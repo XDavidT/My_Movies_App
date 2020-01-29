@@ -90,7 +90,7 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
                                 list.append(moviesResult.id,moviesResult.toMovieModel())
                             }
                             MoviesContent.addMovieList(list)
-                            Log.d("David","We done here !")
+                            Log.d("David","We done to convert !")
                         }
                     }
                     initRecyclerView()

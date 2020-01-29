@@ -30,7 +30,8 @@ data class MoviesResult (
 			BASE_ORIGINAL+backdrop_path,
 			release_date,
 			"",
-			overview
+			overview,
+			popularity
 		)
 	}
 }
