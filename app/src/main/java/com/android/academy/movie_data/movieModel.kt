@@ -1,7 +1,6 @@
-package com.android.academy.movie_model
+package com.android.academy.movie_data
 
 import android.os.Parcelable
-import androidx.annotation.DrawableRes
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize

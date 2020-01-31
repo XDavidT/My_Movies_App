@@ -11,8 +11,8 @@ import com.android.academy.threads.AsyncActivity
 import com.android.academy.details.DetailActivity
 import com.android.academy.list.MoviesFragment
 import com.android.academy.list.OnMovieClickListener
-import com.android.academy.movie_model.MovieModel
-import com.android.academy.movie_model.MoviesContent
+import com.android.academy.movie_data.MovieModel
+import com.android.academy.movie_data.MoviesContent
 import com.android.academy.threads.ThreadsActivity
 import com.android.academy.work_manager.WorkManagerActivity
 

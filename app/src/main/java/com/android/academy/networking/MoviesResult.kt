@@ -1,4 +1,4 @@
-import com.android.academy.movie_model.MovieModel
+import com.android.academy.movie_data.MovieModel
 import com.google.gson.annotations.SerializedName
 
 data class MoviesResult (

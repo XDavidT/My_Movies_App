@@ -11,10 +11,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.academy.R
-import com.android.academy.list.MoviesAdapter
-import com.android.academy.list.OnMovieClickListener
-import com.android.academy.movie_model.MoviesContent
-import com.android.academy.movie_model.MovieModel
+import com.android.academy.movie_data.AppDatabase
+import com.android.academy.movie_data.MoviesContent
+import com.android.academy.movie_data.MovieModel
 import com.android.academy.networking.RestClient
 import kotlinx.android.synthetic.main.movies_rv_fragment.*
 import retrofit2.Call
@@ -96,7 +95,10 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
                     initRecyclerView()
                 }
             })
-
+        AppDatabase.getInstance(context!!)?.movieDao()?.insertAll(MoviesContent.getMoviesList())
+        Log.d("David","**Insert to db complete !**")
     }
+
+
 
 }

@@ -1,10 +1,9 @@
-package com.android.academy.movie_model
+package com.android.academy.movie_data
 
 import android.util.SparseArray
 import androidx.core.util.forEach
 
 object MoviesContent {
-//    val movies = ArrayList<MovieModel>()
     var movies = SparseArray<MovieModel>()
 
     fun getMoviesList(): ArrayList<MovieModel>{

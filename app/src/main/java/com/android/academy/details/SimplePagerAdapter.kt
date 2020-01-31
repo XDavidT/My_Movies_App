@@ -1,10 +1,9 @@
 package com.android.academy.details
 
-import android.graphics.Movie
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.android.academy.movie_model.MoviesContent
+import com.android.academy.movie_data.MoviesContent
 
 class SimplePagerAdapter ( mananger: FragmentManager):
         FragmentPagerAdapter(mananger) {

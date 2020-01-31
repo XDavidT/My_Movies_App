@@ -1,7 +1,5 @@
 package com.android.academy.list
 
-import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +10,7 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.android.academy.R
-import com.android.academy.movie_model.MovieModel
+import com.android.academy.movie_data.MovieModel
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.item_movie.view.*
 

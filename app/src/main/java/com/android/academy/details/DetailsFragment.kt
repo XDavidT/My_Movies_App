@@ -12,8 +12,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
-import com.android.academy.movie_model.MovieModel
-import com.android.academy.movie_model.MoviesContent
+import com.android.academy.movie_data.MovieModel
+import com.android.academy.movie_data.MoviesContent
 import com.android.academy.networking.RestClient
 import com.android.academy.networking.VideoResult
 import com.bumptech.glide.Glide
