@@ -74,4 +74,5 @@ class MainActivity : AppCompatActivity(), OnMovieClickListener {
 //         replace(R.id.activity_main_frame,detailsFragment)
 //        }.commit()
     }
+
 }

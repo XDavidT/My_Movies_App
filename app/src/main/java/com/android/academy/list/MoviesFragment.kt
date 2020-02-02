@@ -1,6 +1,5 @@
 package com.android.academy.list
 
-import MoviesRootResult
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -13,8 +12,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.academy.R
 import com.android.academy.list.MoviesAdapter
 import com.android.academy.list.OnMovieClickListener
+import com.android.academy.movie_model.AppDatabase
 import com.android.academy.movie_model.MoviesContent
 import com.android.academy.movie_model.MovieModel
+import com.android.academy.networking.MoviesRootResult
 import com.android.academy.networking.RestClient
 import kotlinx.android.synthetic.main.movies_rv_fragment.*
 import retrofit2.Call
@@ -91,6 +92,10 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
                             }
                             MoviesContent.addMovieList(list)
                             Log.d("David","We done to convert !")
+
+                            context?.let { it1 -> AppDatabase.getInstance(it1)?.movieDao()?.
+                                insertMovies(MoviesContent.getMoviesList())
+                            Log.d("David","**Insert to DB complete**")}
                         }
                     }
                     initRecyclerView()
@@ -98,5 +103,4 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
             })
 
     }
-
 }

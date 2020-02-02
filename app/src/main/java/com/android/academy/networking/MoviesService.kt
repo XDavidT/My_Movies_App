@@ -1,6 +1,5 @@
 package com.android.academy.networking
 
-import MoviesRootResult
 import com.android.academy.R
 import retrofit2.Call
 import retrofit2.Retrofit
