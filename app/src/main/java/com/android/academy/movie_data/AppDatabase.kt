@@ -9,6 +9,7 @@ import androidx.room.RoomDatabase
 abstract class AppDatabase : RoomDatabase(){
 
     abstract fun movieDao(): MovieDao?
+    abstract fun trailerDao(): TrailerDao?
 
     companion object{
         private const val DATABASE_NAME = "movies"
