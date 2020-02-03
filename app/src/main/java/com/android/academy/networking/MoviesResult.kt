@@ -1,3 +1,5 @@
+package com.android.academy.networking
+
 import com.android.academy.movie_data.MovieModel
 import com.google.gson.annotations.SerializedName
 
@@ -22,7 +24,7 @@ data class MoviesResult (
 		private const val BASE_W500 = "$BASE_URL_PHOTO/w500"
 		private const val BASE_ORIGINAL = "$BASE_URL_PHOTO/original"
 	}
-	fun toMovieModel():MovieModel{
+	fun toMovieModel(): MovieModel {
 		return MovieModel(
 			id,
 			title,

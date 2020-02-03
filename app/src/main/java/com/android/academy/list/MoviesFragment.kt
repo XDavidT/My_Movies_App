@@ -1,6 +1,5 @@
 package com.android.academy.list
 
-import MoviesRootResult
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -14,6 +13,7 @@ import com.android.academy.R
 import com.android.academy.movie_data.AppDatabase
 import com.android.academy.movie_data.MoviesContent
 import com.android.academy.movie_data.MovieModel
+import com.android.academy.networking.MoviesRootResult
 import com.android.academy.networking.RestClient
 import kotlinx.android.synthetic.main.movies_rv_fragment.*
 import retrofit2.Call
@@ -46,7 +46,7 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
         listener?.onMovieClicked(movie)
     }
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is OnMovieClickListener) {
             listener = context
@@ -70,27 +70,30 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
     private fun loadMovies() {
         Log.d("David", "loadMovies")
 
+        //Asking API to get the data
         RestClient.getPopularMovies()
             .enqueue(object : Callback<MoviesRootResult> {
 
+                //First option, the request failed
                 override fun onFailure(call: Call<MoviesRootResult>, t: Throwable) {
                     Log.d("David", "Fail !")
                 }
+
+                //Second option, the request made
                 override fun onResponse(
                     call: Call<MoviesRootResult>,
                     response: Response<MoviesRootResult>
                 ) {
-                    Log.d("David", "inside response")
+
+                    //Be sure we have response from server
                     if (response.isSuccessful) {
-                        Log.d("David", "It's OK !")
                         response.body()?.results?.let{
+                            Log.d("David", "MoviesFragment ->loadMovies->onResponse->isSuccessful")
                             val list = SparseArray<MovieModel>()
                             it.forEach {moviesResult->
                                 list.append(moviesResult.id,moviesResult.toMovieModel())
                             }
-                            MoviesContent.addMovieList(list)
-                            Log.d("David","We done to convert !")
-                        }
+                            MoviesContent.addMovieList(list) }
                     }
                     initRecyclerView()
                 }
