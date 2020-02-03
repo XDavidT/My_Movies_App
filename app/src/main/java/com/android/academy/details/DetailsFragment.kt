@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
+import com.android.academy.movie_data.AppDatabase
 import com.android.academy.movie_data.MovieModel
 import com.android.academy.movie_data.MoviesContent
 import com.android.academy.networking.RestClient
@@ -84,31 +85,7 @@ class DetailsFragment : Fragment(){
         titleText.text = movie.name
         overviewText.text = movie.description
 
-
-        Log.d("David","Load trailer...... !!")
-        if(movie.trailerUrl =="") {
-            RestClient.getVideosToMovies(movie.id).enqueue(object : Callback<VideoResult> {
-                override fun onFailure(call: Call<VideoResult>, t: Throwable) {
-                    Log.d("David", "Fail to get trailer link !")
-                }
-
-                override fun onResponse(call: Call<VideoResult>, response: Response<VideoResult>) {
-                    if (response.isSuccessful) {
-                        response.body()?.getDefaultTrailer().let{
-                            if (it != null) {
-//                                MoviesContent.movies.put(movie.id)
-                                trailerLink = it
-                                MoviesContent.setTrailer(movie.id,it)
-                                Log.d("David","Link updated !!->$it")
-                            }
-                        }
-                    }
-                }
-            })
-        } else{
-            Log.d("David","Already got link...")
-            trailerLink = movie.trailerUrl
-        }
+        trailerHandler(movie)
     }
 
     private fun initViews(view:View){
@@ -118,5 +95,49 @@ class DetailsFragment : Fragment(){
         releaseDate = view.findViewById(R.id.relaseDate)
         trailerButton = view.findViewById(R.id.trailer_button)
         overviewText = view.findViewById(R.id.overview)
+    }
+
+    private fun trailerHandler(movie: MovieModel){
+        Log.d("David","DetailsFragment->loadMovie (trailer sector)")
+
+        //Try first to look in DB for the trailer
+        context?.let {
+            val trailerKey = AppDatabase
+                .getInstance(it)
+                ?.trailerDao()
+                ?.getTrailer(movie.id)  //Call DB to find trailer match this Movie ID
+            trailerKey?.let {videoModel->
+                Log.d("DavidDB","Using DB link")
+                trailerLink = videoModel.keyToUrl()
+                trailerButton.isEnabled = true
+                return
+            }
+        }
+
+        //We didn't found so we moved here
+        RestClient.getVideosToMovies(movie.id).enqueue(object : Callback<VideoResult> {
+
+            override fun onFailure(call: Call<VideoResult>, t: Throwable) {
+                Log.d("David", "Fail to get trailer link !")
+            }
+
+            override fun onResponse(call: Call<VideoResult>, response: Response<VideoResult>) {
+                if (response.isSuccessful) {
+                    response.body()?.covnertToVideoModel().let{videoModel->
+                        if(videoModel!= null){  //When found result, update the DB
+                            context?.let {
+                                AppDatabase
+                                    .getInstance(it)
+                                    ?.trailerDao()
+                                    ?.insertTrailer(videoModel)
+                            trailerLink = videoModel.keyToUrl()
+                            trailerButton.isEnabled = true
+                            }
+                            Log.d("DavidDB","onResponse->Insert new link !")
+                        }
+                    }
+                }
+            }
+        })
     }
 }

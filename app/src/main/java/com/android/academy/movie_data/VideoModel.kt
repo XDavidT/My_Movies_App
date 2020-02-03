@@ -11,4 +11,11 @@ data class VideoModel(
     val movie_id: Int,
     val id: String,
     val key: String
-)
+){
+    companion object{
+        private const val BASE_URL = "https://www.youtube.com/watch?v="
+    }
+    fun keyToUrl():String{
+        return BASE_URL + key
+    }
+}

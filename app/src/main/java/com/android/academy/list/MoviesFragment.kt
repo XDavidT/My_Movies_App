@@ -101,7 +101,4 @@ class MoviesFragment : Fragment(), OnMovieClickListener {
         AppDatabase.getInstance(context!!)?.movieDao()?.insertAll(MoviesContent.getMoviesList())
         Log.d("David","**Insert to db complete !**")
     }
-
-
-
 }
