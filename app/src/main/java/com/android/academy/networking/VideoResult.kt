@@ -1,6 +1,7 @@
 package com.android.academy.networking
 
 
+import com.android.academy.movie_data.VideoModel
 import com.google.gson.annotations.SerializedName
 
 data class VideoResult(
@@ -14,5 +15,13 @@ data class VideoResult(
     }
     fun getDefaultTrailer():String{
         return BASE_URL + results[0].key
+    }
+
+    fun covnertToVideoModel() : VideoModel? {
+        if (!results.isEmpty()) {
+            val firstResult = results[0]
+            return VideoModel(id, firstResult.id, firstResult.key)
+        }
+        return null
     }
 }
