@@ -74,7 +74,7 @@ class DetailsFragment : Fragment(){
         details_cover_download.setOnClickListener {
             Log.d("David","DetailsFragment->onViewCreated->details_cover_download\n" +
                     "User want to download the cover photo")
-
+            DownloadActivity.startActivity(context!!,movie!!)
 
         }
     }
