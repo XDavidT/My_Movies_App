@@ -115,5 +115,18 @@
             android:text="@string/movie_trailer"
             app:layout_constraintStart_toEndOf="@+id/posterImage"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/details_cover_download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:backgroundTint="@color/white"
+            app:srcCompat="@drawable/ic_download_button"
+            android:layout_margin="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/details_cover_image"
+            tools:layout_editor_absoluteX="335dp"
+            tools:layout_editor_absoluteY="160dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

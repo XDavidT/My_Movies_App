@@ -18,6 +18,7 @@ import com.android.academy.movie_data.MoviesContent
 import com.android.academy.networking.RestClient
 import com.android.academy.networking.VideoResult
 import com.bumptech.glide.Glide
+import kotlinx.android.synthetic.main.movie_details_fragment.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -61,10 +62,20 @@ class DetailsFragment : Fragment(){
         initViews(view)
         movie?.let(::loadMovie)
         Log.d("David","onViewCreated - details fragment")
+
+        //Move to youtube using link
         trailerButton.setOnClickListener{
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(trailerLink)
             startActivity(intent)
+        }
+
+        //Start download
+        details_cover_download.setOnClickListener {
+            Log.d("David","DetailsFragment->onViewCreated->details_cover_download\n" +
+                    "User want to download the cover photo")
+
+
         }
     }
 
