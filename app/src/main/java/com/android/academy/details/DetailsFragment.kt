@@ -12,9 +12,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.android.academy.R
+import com.android.academy.download.DownloadActivity
 import com.android.academy.movie_data.AppDatabase
 import com.android.academy.movie_data.MovieModel
-import com.android.academy.movie_data.MoviesContent
 import com.android.academy.networking.RestClient
 import com.android.academy.networking.VideoResult
 import com.bumptech.glide.Glide
@@ -61,7 +61,6 @@ class DetailsFragment : Fragment(){
         val movie:MovieModel? = arguments?.getParcelable(MOVIE_BUNDLE_KEY)
         initViews(view)
         movie?.let(::loadMovie)
-        Log.d("David","onViewCreated - details fragment")
 
         //Move to youtube using link
         trailerButton.setOnClickListener{
@@ -72,10 +71,7 @@ class DetailsFragment : Fragment(){
 
         //Start download
         details_cover_download.setOnClickListener {
-            Log.d("David","DetailsFragment->onViewCreated->details_cover_download\n" +
-                    "User want to download the cover photo")
             DownloadActivity.startActivity(context!!,movie!!)
-
         }
     }
 
@@ -109,7 +105,7 @@ class DetailsFragment : Fragment(){
     }
 
     private fun trailerHandler(movie: MovieModel){
-        Log.d("David","DetailsFragment->loadMovie (trailer sector)")
+//        Log.d("David","DetailsFragment->loadMovie (trailer sector)")
 
         //Try first to look in DB for the trailer
         context?.let {

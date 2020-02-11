@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".details.DownloadActivity"></activity>
+        <activity android:name=".download.DownloadActivity"></activity>
         <activity android:name=".work_manager.WorkManagerActivity" />
         <activity android:name=".bg_service.activity_bgservice" />
         <activity android:name=".threads.ThreadsActivity" />
@@ -28,6 +28,7 @@
 
         <service android:name=".bg_service.HardJobIntentService" />
         <service android:name=".bg_service.HardJobService" />
+        <service android:name=".download.DownloadService"/>
     </application>
 
 </manifest>
