@@ -36,6 +36,20 @@ class DownloadService : Service() {
     private fun startForgService(){
         createNotificationChannel()
         startForeground(ONGOING_NOTIFICATION_ID,createNotification(0))
+        DownloadThread(movieUrl,object: DownloadThread.DownloadCallback{
+            override fun onProgressUpdate(percent: Int) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onDownloadFinish(filePath: String) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+            override fun onError(error: String) {
+                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+            }
+
+        }).start()
     }
 
     override fun onBind(p0: Intent?): IBinder? {
