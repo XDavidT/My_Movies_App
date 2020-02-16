@@ -12,4 +12,8 @@
     <string name="descMovie1">Jurassic World: Fallen Kingdom is a 2018 American science fiction adventure film and the sequel to Jurassic World (2015).</string>
     <string name="movie_title">Title</string>
     <string name="movie_description">movie description</string>
+    <string name="notification_message">Downloading Image %d</string>
+    <string name="channel_name">PosterDownload</string>
+    <string name="channel_desc">Downloading photo</string>
+    <string name="notification_title">MoviesUpdate</string>
 </resources>

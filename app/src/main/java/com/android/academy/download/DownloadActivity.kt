@@ -14,7 +14,7 @@ import com.android.academy.R
 import com.android.academy.movie_data.MovieModel
 
 class DownloadActivity : AppCompatActivity() {
-
+    lateinit var movieModel: MovieModel
     companion object{
         const val PERMISSIONS_REQUEST_CODE: Int = 42
         const val PERMISSION = Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -30,10 +30,11 @@ class DownloadActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_download)
-        val movieModel = intent.getParcelableExtra<MovieModel>(detailsKey)
+
+        movieModel = intent.getParcelableExtra<MovieModel>(detailsKey)!!
         if(isPermissionGranted){
             Log.d("David", "DownloadActivity->isPermissionGranted->True")
-
+            startDownloadService()
         }else{
             val builder = AlertDialog.Builder(this)
             builder.setTitle("Permission needed")
@@ -61,6 +62,7 @@ class DownloadActivity : AppCompatActivity() {
             PERMISSION
         ) == PackageManager.PERMISSION_GRANTED
 
+    //Only after system pop-up
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -69,11 +71,16 @@ class DownloadActivity : AppCompatActivity() {
         if(requestCode == PERMISSIONS_REQUEST_CODE){
             if(grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 Log.d("David","onRequestPermissionsResult -> we have permission")
+                startDownloadService()
             }
             else{
                 Log.d("David","onRequestPermissionsResult -> we have't permission")
                 finish()
             }
         }
+    }
+
+    private fun startDownloadService(){
+        DownloadService.startService(this,movieModel.trailerUrl)
     }
 }
